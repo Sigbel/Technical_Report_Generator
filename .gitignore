@@ -1,6 +1,10 @@
-#tests
+# tests
 test.pdf
+texts_test.py
 
-#Pipfiles
+# Pipfiles
 Pipfile
 Pipfile.lock
+
+# Cache Files
+*__pycache__
