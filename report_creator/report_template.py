@@ -1,10 +1,9 @@
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
-from utils.especifications import ParagraphsCreator
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import Paragraph
-from texts_test import texts
+from report_creator.texts_test import texts
 
 WIDTH = 210
 HEIGHT = 297
@@ -70,16 +69,6 @@ class PagesPDFGenerator(Canvas):
             ))
             p.wrapOn(self, 458, 50)
             p.drawOn(self, 27*mm, 162*mm)
-
-
-            # par = ParagraphsCreator(self)
-
-            # for value in texts.items():
-            #     par.define_paragraph(f'<b>{value[0]}</b><BR/><BR/>{value[1]}', par.define_style(
-            #         name='Main Style', 
-            #         fontName='Times-Roman',
-            #         leading=16,
-            #         ))
                 
         else:
             self.setFont('Times-Bold', 12)
