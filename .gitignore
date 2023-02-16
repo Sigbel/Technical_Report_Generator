@@ -8,3 +8,6 @@ Pipfile.lock
 
 # Cache Files
 *__pycache__
+
+# Tests DB
+data.db
