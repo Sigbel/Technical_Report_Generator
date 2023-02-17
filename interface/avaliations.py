@@ -143,6 +143,17 @@ class Ui_Avaliations(object):
 
         self.retranslateUi(Avaliations)
         QtCore.QMetaObject.connectSlotsByName(Avaliations)
+        Avaliations.setTabOrder(self.line_dim_ava, self.line_act_ava)
+        Avaliations.setTabOrder(self.line_act_ava, self.line_name_ava)
+        Avaliations.setTabOrder(self.line_name_ava, self.line_func_ava)
+        Avaliations.setTabOrder(self.line_func_ava, self.line_amb_ava)
+        Avaliations.setTabOrder(self.line_amb_ava, self.line_ref_ava)
+        Avaliations.setTabOrder(self.line_ref_ava, self.line_luxe_ava)
+        Avaliations.setTabOrder(self.line_luxe_ava, self.line_luxa_ava)
+        Avaliations.setTabOrder(self.line_luxa_ava, self.text_obs_ava)
+        Avaliations.setTabOrder(self.text_obs_ava, self.btn_att_ava)
+        Avaliations.setTabOrder(self.btn_att_ava, self.btn_add_ava)
+        Avaliations.setTabOrder(self.btn_add_ava, self.btn_cancel_ava)
 
     def retranslateUi(self, Avaliations):
         _translate = QtCore.QCoreApplication.translate

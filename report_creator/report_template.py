@@ -7,7 +7,6 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import Paragraph
 from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER, TA_LEFT, TA_RIGHT
 from datetime import datetime
-# from report_creator.texts_test import texts
 
 WIDTH = 210
 HEIGHT = 297

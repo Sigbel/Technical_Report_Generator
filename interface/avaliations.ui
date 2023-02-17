@@ -205,6 +205,20 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>line_dim_ava</tabstop>
+  <tabstop>line_act_ava</tabstop>
+  <tabstop>line_name_ava</tabstop>
+  <tabstop>line_func_ava</tabstop>
+  <tabstop>line_amb_ava</tabstop>
+  <tabstop>line_ref_ava</tabstop>
+  <tabstop>line_luxe_ava</tabstop>
+  <tabstop>line_luxa_ava</tabstop>
+  <tabstop>text_obs_ava</tabstop>
+  <tabstop>btn_att_ava</tabstop>
+  <tabstop>btn_add_ava</tabstop>
+  <tabstop>btn_cancel_ava</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

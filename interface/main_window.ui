@@ -861,22 +861,35 @@
   <tabstop>line_zcode</tabstop>
   <tabstop>line_risk</tabstop>
   <tabstop>line_nfun</tabstop>
+  <tabstop>btn_att_t1</tabstop>
   <tabstop>btn_save_t1</tabstop>
   <tabstop>btn_cancel_t1</tabstop>
   <tabstop>btn_add_t1</tabstop>
   <tabstop>btn_edit_t1</tabstop>
   <tabstop>btn_del_t1</tabstop>
   <tabstop>table_clients</tabstop>
-  <tabstop>combo_client</tabstop>
-  <tabstop>scrollArea</tabstop>
   <tabstop>btn_editP_t2</tabstop>
   <tabstop>btn_gen_t2</tabstop>
+  <tabstop>btn_prox_t2</tabstop>
   <tabstop>btn_addA_t2</tabstop>
   <tabstop>btn_editA_t2</tabstop>
   <tabstop>btn_del_t2</tabstop>
   <tabstop>btn_addI_t2</tabstop>
   <tabstop>btn_altI_t2</tabstop>
   <tabstop>btn_delI_t2</tabstop>
+  <tabstop>combo_client</tabstop>
+  <tabstop>date_r</tabstop>
+  <tabstop>line_pdfname_t2</tabstop>
+  <tabstop>line_cab_t2</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>text_obj</tabstop>
+  <tabstop>text_equip</tabstop>
+  <tabstop>text_met</tabstop>
+  <tabstop>text_proc</tabstop>
+  <tabstop>btn_save_t2</tabstop>
+  <tabstop>btn_cancel_t2</tabstop>
+  <tabstop>table_avaliations</tabstop>
+  <tabstop>listWidget</tabstop>
  </tabstops>
  <resources/>
  <connections/>

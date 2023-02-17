@@ -211,6 +211,7 @@ class Main_Page(QMainWindow, Ui_MainWindow):
                     self.table_avaliations.setItem(i, j, QTableWidgetItem(str(self.avaliations[i][j])))
             
     def update_combo(self, mode):
+        self.combo_client.clear()
         self.con = sqlite3.connect("data.db")
         self.cur = self.con.cursor()
 
@@ -357,6 +358,11 @@ class Main_Page(QMainWindow, Ui_MainWindow):
             msg.setWindowTitle('Informação')
             msg.setText("Relatório gerado com sucesso!")
             msg.setIcon(QMessageBox.Information)
+        elif mode == 15:
+            msg.setWindowTitle('Erro')
+            msg.setText("Os campos: Dimensão, Valor de Referência, Lux (Estação) e Lux (Ambiente)")
+            msg.setInformativeText('Devem ser numéricos!')
+            msg.setIcon(QMessageBox.Warning)
         return msg.exec_()
 
     def insert_client(self):
@@ -393,6 +399,7 @@ class Main_Page(QMainWindow, Ui_MainWindow):
         self.cur.close()
 
         self.update_tables(1)
+        self.update_combo(1)
         self.clean_line_edits(1, True, False)
         self.btn_save_t1.setEnabled(0)
         self.show_popup(2)
@@ -433,6 +440,7 @@ class Main_Page(QMainWindow, Ui_MainWindow):
         self.cur.close()
 
         self.update_tables(1)
+        self.update_combo(1)
         self.btn_att_t1.setEnabled(0)
         self.btn_save_t1.setEnabled(0)
         self.clean_line_edits(1, True, True)
@@ -473,6 +481,7 @@ class Main_Page(QMainWindow, Ui_MainWindow):
         self.cur.close()
 
         self.update_tables(1)
+        self.update_combo(1)
 
     def initial_inclusion(self):
         self.con = sqlite3.connect("data.db")
@@ -524,16 +533,27 @@ class Main_Page(QMainWindow, Ui_MainWindow):
             fields = [self.ui.line_dim_ava, self.ui.line_act_ava, self.ui.line_name_ava, self.ui.line_func_ava,
                     self.ui.line_ref_ava, self.ui.line_luxe_ava, self.ui.line_luxa_ava, self.ui.line_amb_ava]
             show = False
+            test = ''
 
+            # Blank fields text
             for i in fields:
                 if i.text() == '':
                     show = True
+                    test = 'blank'
 
+            # Numeric fields
+            n_fields = [self.ui.line_dim_ava, self.ui.line_ref_ava, self.ui.line_luxa_ava, self.ui.line_luxe_ava]
+            for i in n_fields:
+                if i.text().isnumeric() == False:
+                    show = True
+                    test = 'n_field'
+            
             if show:
-                self.show_popup(8)
+                if test == 'blank':
+                    self.show_popup(8)
+                elif test == 'n_field':
+                    self.show_popup(15)    
                 return
-                
-            # Blank fields text
 
             self.avaliations.append([
                 self.ui.line_dim_ava.text(),
