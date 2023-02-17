@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>429</width>
-    <height>572</height>
+    <width>383</width>
+    <height>615</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,9 +20,9 @@
    <string>Avaliations</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="10,50,40,5">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="10,50,40,0">
       <item>
        <widget class="QLabel" name="label">
         <property name="sizePolicy">
@@ -76,21 +76,21 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="0">
+        <item row="6" column="0">
          <widget class="QLabel" name="label_6">
           <property name="text">
            <string>Valor de Referência</string>
           </property>
          </widget>
         </item>
-        <item row="6" column="0">
+        <item row="7" column="0">
          <widget class="QLabel" name="label_7">
           <property name="text">
            <string>Lux (Estação)</string>
           </property>
          </widget>
         </item>
-        <item row="7" column="0">
+        <item row="8" column="0">
          <widget class="QLabel" name="label_8">
           <property name="text">
            <string>Lux (Ambiente)</string>
@@ -98,25 +98,25 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="line_dim_ava"/>
         </item>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="lineEdit_2"/>
+         <widget class="QLineEdit" name="line_act_ava"/>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEdit_3"/>
+         <widget class="QLineEdit" name="line_name_ava"/>
         </item>
         <item row="3" column="1">
-         <widget class="QLineEdit" name="lineEdit_4"/>
-        </item>
-        <item row="5" column="1">
-         <widget class="QLineEdit" name="lineEdit_5"/>
+         <widget class="QLineEdit" name="line_func_ava"/>
         </item>
         <item row="6" column="1">
-         <widget class="QLineEdit" name="lineEdit_6"/>
+         <widget class="QLineEdit" name="line_ref_ava"/>
         </item>
         <item row="7" column="1">
-         <widget class="QLineEdit" name="lineEdit_7">
+         <widget class="QLineEdit" name="line_luxe_ava"/>
+        </item>
+        <item row="8" column="1">
+         <widget class="QLineEdit" name="line_luxa_ava">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -125,17 +125,27 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="0">
+        <item row="5" column="0">
          <widget class="Line" name="line">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>Ambiente</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="line_amb_ava"/>
+        </item>
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="10,500">
+       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="10,0">
         <item>
          <widget class="QLabel" name="label_9">
           <property name="sizePolicy">
@@ -150,31 +160,28 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_8">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-          </property>
-         </widget>
+         <widget class="QTextEdit" name="text_obs_ava"/>
         </item>
        </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="btn_att_ava">
+          <property name="text">
+           <string>Atualizar</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_add_ava">
           <property name="text">
            <string>Incluir</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="btn_cancel_ava">
           <property name="text">
            <string>Cancelar</string>
           </property>
@@ -191,7 +198,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>429</width>
+     <width>383</width>
      <height>21</height>
     </rect>
    </property>

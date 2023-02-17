@@ -9,15 +9,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1122</width>
-    <height>742</height>
+    <width>796</width>
+    <height>719</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>TechRep (Report Gen)</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QHBoxLayout" name="horizontalLayout_6">
     <item>
      <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0">
       <property name="spacing">
@@ -81,11 +81,17 @@
           <property name="enabled">
            <bool>true</bool>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>472</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="tabPosition">
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -406,18 +412,71 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_11">
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout_10" stretch="0,25,1,10">
+               <layout class="QVBoxLayout" name="verticalLayout_10" stretch="0,25,0,1,10">
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="10,50">
+                 <layout class="QVBoxLayout" name="verticalLayout">
                   <item>
-                   <widget class="QLabel" name="label_9">
-                    <property name="text">
-                     <string>Cliente</string>
-                    </property>
-                   </widget>
+                   <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="10,50,5,10">
+                    <item>
+                     <widget class="QLabel" name="label_9">
+                      <property name="text">
+                       <string>Cliente</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QComboBox" name="combo_client"/>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_15">
+                      <property name="text">
+                       <string>Data</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QDateEdit" name="date_r">
+                      <property name="showGroupSeparator" stdset="0">
+                       <bool>false</bool>
+                      </property>
+                      <property name="calendarPopup">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="combo_client"/>
+                   <layout class="QHBoxLayout" name="horizontalLayout_4">
+                    <item>
+                     <widget class="QLabel" name="label_16">
+                      <property name="text">
+                       <string>Nome do Arquivo (PDF)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="line_pdfname_t2"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_5">
+                    <item>
+                     <widget class="QLabel" name="label_17">
+                      <property name="text">
+                       <string>Cabeçalho</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="line_cab_t2">
+                      <property name="placeholderText">
+                       <string>Padrão: Análise Ergonômico Preliminar (AEP) </string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </item>
                  </layout>
                 </item>
@@ -431,13 +490,13 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>841</width>
-                     <height>408</height>
+                     <width>498</width>
+                     <height>404</height>
                     </rect>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_15">
                     <item>
-                     <layout class="QVBoxLayout" name="verticalLayout_13" stretch="5,0">
+                     <layout class="QVBoxLayout" name="verticalLayout_13" stretch="20,0">
                       <item>
                        <widget class="QLabel" name="label_12">
                         <property name="sizePolicy">
@@ -452,20 +511,7 @@
                        </widget>
                       </item>
                       <item>
-                       <widget class="QLineEdit" name="line_obj">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="layoutDirection">
-                         <enum>Qt::LeftToRight</enum>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                        </property>
-                       </widget>
+                       <widget class="QTextEdit" name="text_obj"/>
                       </item>
                      </layout>
                     </item>
@@ -485,17 +531,7 @@
                        </widget>
                       </item>
                       <item>
-                       <widget class="QLineEdit" name="line_equip">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                        </property>
-                       </widget>
+                       <widget class="QTextEdit" name="text_equip"/>
                       </item>
                      </layout>
                     </item>
@@ -515,17 +551,7 @@
                        </widget>
                       </item>
                       <item>
-                       <widget class="QLineEdit" name="line_met">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                        </property>
-                       </widget>
+                       <widget class="QTextEdit" name="text_met"/>
                       </item>
                      </layout>
                     </item>
@@ -545,23 +571,44 @@
                        </widget>
                       </item>
                       <item>
-                       <widget class="QLineEdit" name="line_proc">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                        </property>
-                       </widget>
+                       <widget class="QTextEdit" name="text_proc"/>
                       </item>
                      </layout>
                     </item>
                    </layout>
                   </widget>
                  </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_3">
+                  <item>
+                   <spacer name="horizontalSpacer_3">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btn_save_t2">
+                    <property name="text">
+                     <string>Salvar</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btn_cancel_t2">
+                    <property name="text">
+                     <string>Cancelar</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_15" stretch="25,7">
@@ -587,23 +634,71 @@
                    <number>6</number>
                   </property>
                   <item>
-                   <widget class="QListView" name="list_A">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
+                   <widget class="QTableWidget" name="table_avaliations">
+                    <property name="lineWidth">
+                     <number>0</number>
                     </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>260</width>
-                      <height>0</height>
-                     </size>
+                    <property name="showGrid">
+                     <bool>true</bool>
                     </property>
+                    <property name="sortingEnabled">
+                     <bool>false</bool>
+                    </property>
+                    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                     <bool>false</bool>
+                    </attribute>
+                    <attribute name="verticalHeaderStretchLastSection">
+                     <bool>false</bool>
+                    </attribute>
+                    <column>
+                     <property name="text">
+                      <string>Dimensão</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Atividade</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Função</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Colaborador</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Referência</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Lux (Estação)</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Lux (Ambiente)</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Ambiente</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>OBS</string>
+                     </property>
+                    </column>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QListView" name="list_I"/>
+                   <widget class="QListWidget" name="listWidget"/>
                   </item>
                  </layout>
                 </item>
@@ -619,13 +714,6 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btn_preP_t2">
-                  <property name="text">
-                   <string>Pré-Visualizar</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QPushButton" name="btn_gen_t2">
                   <property name="text">
                    <string>Gerar PDF</string>
@@ -634,6 +722,26 @@
                 </item>
                 <item>
                  <spacer name="verticalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btn_prox_t2">
+                  <property name="text">
+                   <string>Próximo Relatório</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_3">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
                   </property>
@@ -723,7 +831,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1122</width>
+     <width>796</width>
      <height>21</height>
     </rect>
    </property>
@@ -761,14 +869,7 @@
   <tabstop>table_clients</tabstop>
   <tabstop>combo_client</tabstop>
   <tabstop>scrollArea</tabstop>
-  <tabstop>line_obj</tabstop>
-  <tabstop>line_equip</tabstop>
-  <tabstop>line_met</tabstop>
-  <tabstop>line_proc</tabstop>
-  <tabstop>list_A</tabstop>
-  <tabstop>list_I</tabstop>
   <tabstop>btn_editP_t2</tabstop>
-  <tabstop>btn_preP_t2</tabstop>
   <tabstop>btn_gen_t2</tabstop>
   <tabstop>btn_addA_t2</tabstop>
   <tabstop>btn_editA_t2</tabstop>

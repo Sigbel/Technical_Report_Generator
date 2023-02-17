@@ -1,35 +1,74 @@
+import sqlite3
+
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import Paragraph
-from report_creator.texts_test import texts
+from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER, TA_LEFT, TA_RIGHT
+from datetime import datetime
+# from report_creator.texts_test import texts
 
 WIDTH = 210
 HEIGHT = 297
 
-
 class PagesPDFGenerator(Canvas):
-    def __init__(self, avaliations, *args, **kwargs):
+    def __init__(self, avaliations, cap, client, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.pages = []
         self.avlts = avaliations
+        self.cap = cap
+        self.client_name = client
+        self.pages = []
         self.avlt_count = 0
+        self.dt = datetime.now()
+
+        if self.cap == '':
+            self.cap = 'Análise Ergonômico Preliminar (AEP)'
+
+        # DataBank Consult and Adaptation
+        self.con = sqlite3.connect('./data.db')
+        self.cur = self.con.cursor()
+
+        self.cur.execute("SELECT obj, equip, methods, proc FROM report")
+        self.texts = self.cur.fetchall()
+        
+        self.cur.close()
+
+        self.new_texts = []
+        for i in range(len(self.texts[0])):
+            new = self.texts[0][i].replace('\n', '<BR />\n')
+            self.new_texts.append(new)
 
     def showPage(self):
         self.drawImage("./images/footer.png", 0, 0, WIDTH*mm, HEIGHT*mm, mask='auto')
         self.setFont('Times-Bold', 8)
-        text = "Análise Ergonômico Preliminar (AEP)"
-        self.drawString(10*mm, 286*mm, text)
+        self.drawString(10*mm, 286*mm, self.cap)
         
         if len(self.pages) == 0:
             self.drawImage("./images/logo_lux2.jpg", ((WIDTH*mm)/2)-(145*mm/2), ((HEIGHT*mm)/2)-(215*mm/2), 145*mm, 215*mm)
+            p = Paragraph(self.client_name, ParagraphStyle(
+                name='Logo Style',
+                fontName='Times-Roman',
+                leading=12,
+                alignment=TA_CENTER
+            ))
+            p.wrapOn(self, 200, 40)
+            p.drawOn(self, 71*mm, 145*mm)
+        
+            p = Paragraph(self.dt.strftime("%d-%m-%Y"), ParagraphStyle(
+                name="Date Style",
+                fontName='Times-Roman',
+                leading=12,
+                alignment=TA_CENTER
+            ))
+            p.wrapOn(self, 200, 40)
+            p.drawOn(self, 71*mm, 134*mm)
+
 
         elif len(self.pages) == 1:
             self.setFont('Times-Bold', 10)
             self.drawString(27*mm, 265*mm, f'OBJETIVOS')
-            p = Paragraph(f'''
-                {texts['OBJETIVOS']}''', ParagraphStyle(
+            p = Paragraph(f'{self.new_texts[0]}', ParagraphStyle(
                     name='Dimensions Style',
                     fontName='Times-Roman',
                     leading=12,
@@ -39,8 +78,7 @@ class PagesPDFGenerator(Canvas):
 
             self.setFont('Times-Bold', 10)
             self.drawString(27*mm, 242*mm, f'EQUIPAMENTOS DE MEDIÇÃO')
-            p = Paragraph(f'''
-                <bullet>&bull;</bullet>{texts['EQUIPAMENTOS DE MEDIÇÃO']}''', ParagraphStyle(
+            p = Paragraph(f'{self.new_texts[1]}', ParagraphStyle(
                     name='Dimensions Style',
                     fontName='Times-Roman',
                     leading=12,
@@ -50,8 +88,7 @@ class PagesPDFGenerator(Canvas):
 
             self.setFont('Times-Bold', 10)
             self.drawString(27*mm, 214*mm, f'METODOLOGIA')
-            p = Paragraph(f'''
-                {texts['METODOLOGIA']}''', ParagraphStyle(
+            p = Paragraph(f'{self.new_texts[2]}', ParagraphStyle(
                     name='Dimensions Style',
                     fontName='Times-Roman',
                     leading=12,
@@ -61,8 +98,7 @@ class PagesPDFGenerator(Canvas):
 
             self.setFont('Times-Bold', 10)
             self.drawString(27*mm, 185*mm, f'PROCEDIMENTO')
-            p = Paragraph(f'''
-                {texts['PROCEDIMENTO']}''', ParagraphStyle(
+            p = Paragraph(f'{self.new_texts[3]}', ParagraphStyle(
                     name='Dimensions Style',
                     fontName='Times-Roman',
                     leading=12,
@@ -75,11 +111,11 @@ class PagesPDFGenerator(Canvas):
             self.drawString(27*mm, 265*mm, f'AVALIAÇÃO {self.avlt_count+1}')
 
             p = Paragraph(f'''
-                Dimensão da Sala(m²): <b>{self.avlts[f"{self.avlt_count+1}"][0]}</b><br/>
-                Tipo de Atividade: <b>{self.avlts[f"{self.avlt_count+1}"][1]}</b><br/>
-                Nome do Colaborador: <b>{self.avlts[f"{self.avlt_count+1}"][2]}</b><br/>
-                Tipo de Função: <b>{self.avlts[f"{self.avlt_count+1}"][3]}</b><br/><br/>
-                Valor de Referência para a Estação: <b>{self.avlts[f"{self.avlt_count+1}"][4]}</b>
+                Dimensão da Sala(m²): <b>{self.avlts[self.avlt_count][0]}</b><br/>
+                Tipo de Atividade: <b>{self.avlts[self.avlt_count][1]}</b><br/>
+                Nome do Colaborador: <b>{self.avlts[self.avlt_count][2]}</b><br/>
+                Tipo de Função: <b>{self.avlts[self.avlt_count][3]}</b><br/><br/>
+                Valor de Referência para a Estação: <b>{self.avlts[self.avlt_count][4]}</b>
                 ''', ParagraphStyle(
                     name='Dimensions Style',
                     fontName='Times-Roman',
@@ -91,7 +127,7 @@ class PagesPDFGenerator(Canvas):
 
             self.line(27*mm, 231*mm, 190*mm, 231*mm)
             self.setFont('Times-Bold', 12)
-            self.drawCentredString(108.5*mm, 225*mm, f'AMBIENTE {self.avlt_count+1} - {self.avlts[f"{self.avlt_count+1}"][7]}')
+            self.drawCentredString(108.5*mm, 225*mm, f'AMBIENTE {self.avlt_count+1} - {self.avlts[self.avlt_count][7]}')
             self.line(27*mm, 222*mm, 190*mm, 222*mm)
 
             self.setFont('Times-Bold', 9)
@@ -100,22 +136,20 @@ class PagesPDFGenerator(Canvas):
 
             self.line(27*mm, 213*mm, 190*mm, 213*mm)
 
-            if self.avlts[f"{self.avlt_count+1}"][5] < self.avlts[f"{self.avlt_count+1}"][4]*0.9:
+            if float(self.avlts[self.avlt_count][5]) < float(self.avlts[self.avlt_count][4])*0.9:
                 self.setFillColor('red')
             else:
                 self.setFillColor('green')
-            self.drawString(67*mm, 208*mm, f'{self.avlts[f"{self.avlt_count+1}"][5]}')
+            self.drawString(67*mm, 208*mm, f'{self.avlts[self.avlt_count][5]}')
 
             self.setFillColor('black')
-            self.drawString(137*mm, 208*mm, f'{self.avlts[f"{self.avlt_count+1}"][6]}')
+            self.drawString(137*mm, 208*mm, f'{self.avlts[self.avlt_count][6]}')
             self.line(27*mm, 205*mm, 190*mm, 205*mm)
 
             # Observation Section
-            p = Paragraph('''<b>OBSERVAÇÃO:</b><br/><br/>
-                É recomendado realizar a troca das lampadas para uma mais forte, o local de trabalho
-                (estação) necessita de 500 (lux) por estação. A Norma de Higiene Ocupacional NHO 11
-                permite uma tolerância de 10% sobre os 500 (lux).<br/><br/>
-                <b>Foi tirado uma média por estação e todas estão abaixo de 170lux.</b>''', ParagraphStyle(
+            p = Paragraph(f'''<b>OBSERVAÇÃO:</b><br/><br/>
+                {self.avlts[self.avlt_count][8]}<br/><br/>
+                ''', ParagraphStyle(
                     name='Obs Style',
                     fontName='Times-Roman',
                     leading=12,
