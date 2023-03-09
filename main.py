@@ -174,8 +174,10 @@ class Main_Page(QMainWindow, Ui_MainWindow):
             value6 = index.sibling(index.row(), 6).data()
             value7 = index.sibling(index.row(), 7).data()
             value8 = index.sibling(index.row(), 8).data()
+            value9 = index.sibling(index.row(), 9).data()
+            value10 = index.sibling(index.row(), 10).data()
 
-            data = [value0, value1, value2, value3, value4, value5, value6, value7, value8]
+            data = [value0, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10]
             self.index = self.avaliations.index(data)
 
     def update_tables(self, mode):
@@ -204,10 +206,10 @@ class Main_Page(QMainWindow, Ui_MainWindow):
             self.cur.close()
         elif mode == 2:
             self.table_avaliations.setRowCount(len(self.avaliations))
-            self.table_avaliations.setColumnCount(9)   
+            self.table_avaliations.setColumnCount(11)   
 
             for i in range(0, len(self.avaliations)):
-                for j in range(0,9):
+                for j in range(0,11):
                     self.table_avaliations.setItem(i, j, QTableWidgetItem(str(self.avaliations[i][j])))
             
     def update_combo(self, mode):
@@ -531,7 +533,8 @@ class Main_Page(QMainWindow, Ui_MainWindow):
     def pass_information(self, window):
         if window == 'ava':
             fields = [self.ui.line_dim_ava, self.ui.line_act_ava, self.ui.line_name_ava, self.ui.line_func_ava,
-                    self.ui.line_ref_ava, self.ui.line_luxe_ava, self.ui.line_luxa_ava, self.ui.line_amb_ava]
+                    self.ui.line_ref_ava, self.ui.line_luxe_ava, self.ui.line_luxa_ava, self.ui.line_amb_ava,
+                    self.ui.line_temp_ava, self.ui.line_ca_ava]
             show = False
             test = ''
 
@@ -542,7 +545,8 @@ class Main_Page(QMainWindow, Ui_MainWindow):
                     test = 'blank'
 
             # Numeric fields
-            n_fields = [self.ui.line_dim_ava, self.ui.line_ref_ava, self.ui.line_luxa_ava, self.ui.line_luxe_ava]
+            n_fields = [self.ui.line_dim_ava, self.ui.line_ref_ava, self.ui.line_luxa_ava, self.ui.line_luxe_ava,
+                        self.ui.line_temp_ava]
             for i in n_fields:
                 if i.text().isnumeric() == False:
                     show = True
@@ -565,6 +569,8 @@ class Main_Page(QMainWindow, Ui_MainWindow):
                 self.ui.line_luxa_ava.text(),
                 self.ui.line_amb_ava.text(),
                 self.ui.text_obs_ava.toPlainText(),
+                self.ui.line_temp_ava.text(),
+                self.ui.line_ca_ava.text(),
             ])
             
             self.table_clients.repaint()
@@ -591,13 +597,16 @@ class Main_Page(QMainWindow, Ui_MainWindow):
             self.ui.line_luxa_ava.setText(list_t[6])
             self.ui.line_amb_ava.setText(list_t[7])
             self.ui.text_obs_ava.setText(list_t[8])
+            self.ui.line_temp_ava.setText(list_t[9])
+            self.ui.line_ca_ava.setText(list_t[10])
             
             self.ui.btn_add_ava.setEnabled(0)
             self.openWindow('main')
 
     def avaliation_cancel(self):
         fields = [self.ui.line_dim_ava, self.ui.line_act_ava, self.ui.line_name_ava, self.ui.line_func_ava,
-                self.ui.line_ref_ava, self.ui.line_luxe_ava, self.ui.line_luxa_ava, self.ui.line_amb_ava]
+                self.ui.line_ref_ava, self.ui.line_luxe_ava, self.ui.line_luxa_ava, self.ui.line_amb_ava,
+                self.ui.line_temp_ava, self.ui.line_ca_ava]
         
         for i in fields:
             i.clear()
@@ -607,7 +616,8 @@ class Main_Page(QMainWindow, Ui_MainWindow):
     
     def update_avaliation(self):
         fields = [self.ui.line_dim_ava, self.ui.line_act_ava, self.ui.line_name_ava, self.ui.line_func_ava,
-                    self.ui.line_ref_ava, self.ui.line_luxe_ava, self.ui.line_luxa_ava, self.ui.line_amb_ava]
+                self.ui.line_ref_ava, self.ui.line_luxe_ava, self.ui.line_luxa_ava, self.ui.line_amb_ava,
+                self.ui.line_temp_ava, self.ui.line_ca_ava]
         list_t = [
                 self.ui.line_dim_ava.text(),
                 self.ui.line_act_ava.text(),
@@ -618,6 +628,8 @@ class Main_Page(QMainWindow, Ui_MainWindow):
                 self.ui.line_luxa_ava.text(),
                 self.ui.line_amb_ava.text(),
                 self.ui.text_obs_ava.toPlainText(),
+                self.ui.line_temp_ava.text(),
+                self.ui.line_ca_ava.text(),
             ]
         
         self.avaliations.pop(self.index)

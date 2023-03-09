@@ -106,14 +106,18 @@ class PagesPDFGenerator(Canvas):
             p.drawOn(self, 27*mm, 162*mm)
                 
         else:
+            h = [265, 224, 221, 215, 212, 206, 206, 203, 198, 198, 195, 160]
+
             self.setFont('Times-Bold', 12)
-            self.drawString(27*mm, 265*mm, f'AVALIAÇÃO {self.avlt_count+1}')
+            self.drawString(27*mm, h[0]*mm, f'AVALIAÇÃO {self.avlt_count+1}')
 
             p = Paragraph(f'''
-                Dimensão da Sala(m²): <b>{self.avlts[self.avlt_count][0]}</b><br/>
+                Dimensão da Sala (m²): <b>{self.avlts[self.avlt_count][0]}</b><br/>
                 Tipo de Atividade: <b>{self.avlts[self.avlt_count][1]}</b><br/>
                 Nome do Colaborador: <b>{self.avlts[self.avlt_count][2]}</b><br/>
-                Tipo de Função: <b>{self.avlts[self.avlt_count][3]}</b><br/><br/>
+                Tipo de Função: <b>{self.avlts[self.avlt_count][3]}</b><br/>
+                Temperatura do Ambiente (ºC): <b>{self.avlts[self.avlt_count][9]}</b><br/>
+                Climatização do Ambiente: <b>{self.avlts[self.avlt_count][10]}</b><br/><br/>
                 Valor de Referência para a Estação: <b>{self.avlts[self.avlt_count][4]}</b>
                 ''', ParagraphStyle(
                     name='Dimensions Style',
@@ -122,28 +126,28 @@ class PagesPDFGenerator(Canvas):
             ))
 
             p.wrapOn(self, 458, 50)
-            p.drawOn(self, 27*mm, 234*mm)
+            p.drawOn(self, 27*mm, h[1]*mm)
 
-            self.line(27*mm, 231*mm, 190*mm, 231*mm)
+            self.line(27*mm, h[2]*mm, 190*mm, h[2]*mm)
             self.setFont('Times-Bold', 12)
-            self.drawCentredString(108.5*mm, 225*mm, f'AMBIENTE {self.avlt_count+1} - {self.avlts[self.avlt_count][7]}')
-            self.line(27*mm, 222*mm, 190*mm, 222*mm)
+            self.drawCentredString(108.5*mm, h[3]*mm, f'AMBIENTE {self.avlt_count+1} - {self.avlts[self.avlt_count][7]}')
+            self.line(27*mm, h[4]*mm, 190*mm, h[4]*mm)
 
             self.setFont('Times-Bold', 9)
-            self.drawString(47*mm, 216*mm, 'Iluminância na área da tarefa (lux)')
-            self.drawString(117*mm, 216*mm, 'Iluminância no entorno imediato (lux)')
+            self.drawString(47*mm, h[5]*mm, 'Iluminância na área da tarefa (lux)')
+            self.drawString(117*mm, h[6]*mm, 'Iluminância no entorno imediato (lux)')
 
-            self.line(27*mm, 213*mm, 190*mm, 213*mm)
+            self.line(27*mm, h[7]*mm, 190*mm, h[7]*mm)
 
             if float(self.avlts[self.avlt_count][5]) < float(self.avlts[self.avlt_count][4])*0.9:
                 self.setFillColor('red')
             else:
                 self.setFillColor('green')
-            self.drawString(67*mm, 208*mm, f'{self.avlts[self.avlt_count][5]}')
+            self.drawString(67*mm, h[8]*mm, f'{self.avlts[self.avlt_count][5]}')
 
             self.setFillColor('black')
-            self.drawString(137*mm, 208*mm, f'{self.avlts[self.avlt_count][6]}')
-            self.line(27*mm, 205*mm, 190*mm, 205*mm)
+            self.drawString(137*mm, h[9]*mm, f'{self.avlts[self.avlt_count][6]}')
+            self.line(27*mm, h[10]*mm, 190*mm, h[10]*mm)
 
             # Observation Section
             p = Paragraph(f'''<b>OBSERVAÇÃO:</b><br/><br/>
@@ -158,7 +162,7 @@ class PagesPDFGenerator(Canvas):
             ))
 
             p.wrapOn(self, 458, 50)
-            p.drawOn(self, 28*mm, 170*mm)
+            p.drawOn(self, 28*mm, h[11]*mm)
 
             self.avlt_count += 1
             

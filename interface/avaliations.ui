@@ -55,12 +55,18 @@
           </property>
          </widget>
         </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="line_dim_ava"/>
+        </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_3">
           <property name="text">
            <string>Atividade</string>
           </property>
          </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="line_act_ava"/>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_4">
@@ -69,6 +75,9 @@
           </property>
          </widget>
         </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="line_name_ava"/>
+        </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label_5">
           <property name="text">
@@ -76,61 +85,8 @@
           </property>
          </widget>
         </item>
-        <item row="6" column="0">
-         <widget class="QLabel" name="label_6">
-          <property name="text">
-           <string>Valor de Referência</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="0">
-         <widget class="QLabel" name="label_7">
-          <property name="text">
-           <string>Lux (Estação)</string>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="0">
-         <widget class="QLabel" name="label_8">
-          <property name="text">
-           <string>Lux (Ambiente)</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="line_dim_ava"/>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="line_act_ava"/>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="line_name_ava"/>
-        </item>
         <item row="3" column="1">
          <widget class="QLineEdit" name="line_func_ava"/>
-        </item>
-        <item row="6" column="1">
-         <widget class="QLineEdit" name="line_ref_ava"/>
-        </item>
-        <item row="7" column="1">
-         <widget class="QLineEdit" name="line_luxe_ava"/>
-        </item>
-        <item row="8" column="1">
-         <widget class="QLineEdit" name="line_luxa_ava">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="Line" name="line">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="label_10">
@@ -141,6 +97,70 @@
         </item>
         <item row="4" column="1">
          <widget class="QLineEdit" name="line_amb_ava"/>
+        </item>
+        <item row="6" column="0">
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Valor de Referência</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="1">
+         <widget class="QLineEdit" name="line_ref_ava"/>
+        </item>
+        <item row="9" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>Lux (Estação)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="1">
+         <widget class="QLineEdit" name="line_luxe_ava"/>
+        </item>
+        <item row="10" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Lux (Ambiente)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="1">
+         <widget class="QLineEdit" name="line_luxa_ava">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QLabel" name="label_11">
+          <property name="text">
+           <string>Temperatura (ºC)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="1">
+         <widget class="QLineEdit" name="line_temp_ava"/>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_12">
+          <property name="text">
+           <string>Climatização do Ambiente</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="line_ca_ava"/>
         </item>
        </layout>
       </item>
@@ -211,6 +231,8 @@
   <tabstop>line_name_ava</tabstop>
   <tabstop>line_func_ava</tabstop>
   <tabstop>line_amb_ava</tabstop>
+  <tabstop>line_ca_ava</tabstop>
+  <tabstop>line_temp_ava</tabstop>
   <tabstop>line_ref_ava</tabstop>
   <tabstop>line_luxe_ava</tabstop>
   <tabstop>line_luxa_ava</tabstop>
